@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp.cardholderHomeView', ['ngRoute'])
+angular.module('cashMachine.cardholderHomeView', ['ngRoute'])
 
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/cardholder-home', {

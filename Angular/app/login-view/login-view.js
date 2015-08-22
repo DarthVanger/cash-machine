@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp.loginView', ['ngRoute'])
+angular.module('cashMachine.loginView', ['ngRoute'])
 
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/login-view', {

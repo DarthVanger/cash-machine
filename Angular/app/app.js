@@ -1,11 +1,11 @@
 'use strict';
 
 // Declare app level module which depends on views, and components
-angular.module('myApp', [
+angular.module('cashMachine', [
   'ngRoute',
-  'myApp.loginView',
-  'myApp.cardholderHomeView'
-  //'myApp.version'
+  'cashMachine.loginView',
+  'cashMachine.cardholderHomeView'
+  //'cashMachine.version'
 ]).
 config(['$routeProvider', function($routeProvider) {
   $routeProvider.otherwise({redirectTo: '/login-view'});
