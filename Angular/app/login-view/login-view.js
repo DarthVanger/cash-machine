@@ -11,6 +11,9 @@ angular.module('cashMachine.loginView', ['ngRoute'])
 
 .controller('LoginViewCtrl', ['$scope', function($scope) {
     console.log('login view!');
+    $scope.showVirtualKeyboard = function() {
+        console.log('keyboard! :)');
+    };
     //$scope.cardholderInfo = {
     //    cardNumber: 12,
     //    pinCode: 24

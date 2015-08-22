@@ -1,0 +1,32 @@
+.pin-code-keyboard {
+    max-width: 300px;
+}
+.pin-code-keyboard__row + .pin-code-keyboard__row {
+    margin-top: 2px;
+}
+.pin-code-keyboard__btn {
+    height: 96px;
+    width: 98px;
+    line-height: 60px;
+    font-size: 40px;
+}
+.pin-code-keyboard__btn + .pin-code-keyboard__btn  {
+    margin-left: 2px;
+}
+.pin-code-keyboard__btn__img {
+    width: 100%;
+}
+.pin-code-keyboard__display{
+    width: 100%;
+    height: 50px;
+    border: 1px solid #555;
+    border-radius: 5px;
+    font-size: 30px;
+    line-height: 50px;
+    text-align: center;
+}
+.pin-code-keyboard__submit-btn {
+    margin-top: 2px;
+    width: 100%;
+    font-size: 20px;
+}

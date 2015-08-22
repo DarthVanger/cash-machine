@@ -10,13 +10,16 @@
     <div class="form-group">
         <label for="input-pin-code" class="col-sm-4 control-label">Pin-code</label>
         <div class="col-sm-8">
-            <input type="number" name="pinCode" class="form-control" id="input-pin-code" ng-model="cardholderInfo.pinCode" />
+            <input type="number" name="pinCode" class="form-control" id="input-pin-code" ng-model="cardholderInfo.pinCode" ng-focus="showVirtualKeyboard()" />
         </div>
         <!--
         <div class="help-block col-sm-offset-4 col-sm-8" ng-show="cardholderLoginForm.pinCode.$invalid">Card number should contain only digits</div>
         -->
     </div>
 </form>
+
+<div pin-code-keyboard>
+</div>
 <!-- debug
     <div>
         <tt>cardholderLoginForm.cardNumber.$valid = {{cardholderLoginForm.cardNumber.$valid}}</tt><br/>
