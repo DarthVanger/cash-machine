@@ -1,6 +1,7 @@
 var express = require('express');
 //var bodyParser = require('body-parser'); // body parser for parsing POST data from request body
 var fs = require('fs');
+var config = require('./config');
 
 // use file database
 var low = require('lowdb')
@@ -17,11 +18,11 @@ cashMachine.use(express.static('../Angular/app'));
 //databaseApi.use(bodyParser.json());
 
 // mount the interface and the database api servers
-var serverBaseUrl = '';
-app.use(serverBaseUrl + '/', cashMachine);
-app.use(serverBaseUrl + '/bank-database', databaseApi);
+app.use(config.serverBaseUrl + '/', cashMachine);
+app.use(config.serverBaseUrl + '/bank-database', databaseApi);
 
-app.listen(8000);
+app.listen(config.serverPort);
+console.log('Listening to port ' + config.serverPort);
 
 // ---------------------------------
 
