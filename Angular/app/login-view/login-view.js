@@ -1,6 +1,9 @@
 'use strict';
 
-angular.module('cashMachine.loginView', ['ngRoute'])
+angular.module('cashMachine.loginView', [
+    'ngRoute',
+    'cashMachine.entity.cardholder'
+])
 
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/login-view', {
@@ -9,7 +12,7 @@ angular.module('cashMachine.loginView', ['ngRoute'])
   });
 }])
 
-.controller('LoginViewCtrl', ['$scope', function($scope) {
+.controller('LoginViewCtrl', ['$scope', 'Cardholder', function($scope, Cardholder) {
 
     $scope.cardholderInfo = {
         cardNumber: '',
@@ -38,6 +41,13 @@ angular.module('cashMachine.loginView', ['ngRoute'])
             console.log('submittting! :)');
             console.log('cardholder info:');
             console.log($scope.cardholderInfo);
+            Cardholder.get({ 'cardNumber': $scope.cardholderInfo.cardNumber }, function(cardholder) {
+                console.log('cardholder', cardholder);
+            }, function(error) {
+                console.log('error retrvivieng card holde from server!');
+                console.log(error);
+            });
+
         } else {
             console.log('form invalid! :)');
         }

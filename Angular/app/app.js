@@ -5,7 +5,8 @@ angular.module('cashMachine', [
   'ngRoute',
   'cashMachine.loginView',
   'cashMachine.cardholderHomeView',
-  'cashMachine.pinCodeKeyboard'
+  'cashMachine.pinCodeKeyboard',
+  'cashMachine.entity.cardholder'
 ]).
 config(['$routeProvider', function($routeProvider) {
   $routeProvider.otherwise({redirectTo: '/login-view'});
