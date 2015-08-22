@@ -13,18 +13,23 @@
   <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
   <link rel="stylesheet" href="app.css">
   <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+
+  <!-- Bootstrap -->
+  <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-  <ul class="menu">
-    <li><a href="#/login-view">login</a></li>
-    <li><a href="#/cardholder-home">cardholder-home</a></li>
-  </ul>
+  <div class="container page-container">
+      <ul class="menu">
+        <li><a href="#/login-view">login</a></li>
+        <li><a href="#/cardholder-home">cardholder-home</a></li>
+      </ul>
 
-  <!--[if lt IE 7]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-  <![endif]-->
+      <!--[if lt IE 7]>
+          <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+      <![endif]-->
 
-  <div ng-view></div>
+      <div ng-view></div>
+  </div> <!-- end .page-container -->
 
   <!--
   <div>Angular seed app: v<span app-version></span></div>

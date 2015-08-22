@@ -1,1 +1,25 @@
-<p>This is the partial for view 1.</p>
+<div class="h3">Enter your card number and pincode</div>
+<form name="cardholderLoginForm" class="form-horizontal cardholer-login-form" novalidate>
+    <div class="form-group" ng-class="{ 'has-error': cardholderLoginForm.cardNumber.$invalid }">
+        <label for="input-card-number" class="col-sm-4 control-label">Card Number</label>
+        <div class="col-sm-8">
+            <input type="number" name="cardNumber" class="form-control" id="input-card-number" ng-model="cardholderInfo.cardNumber" />
+        </div>
+        <div class="help-block col-sm-offset-4 col-sm-8" ng-show="cardholderLoginForm.cardNumber.$invalid">Card number should contain only digits</div>
+    </div>
+    <div class="form-group">
+        <label for="input-pin-code" class="col-sm-4 control-label">Pin-code</label>
+        <div class="col-sm-8">
+            <input type="number" name="pinCode" class="form-control" id="input-pin-code" ng-model="cardholderInfo.pinCode" />
+        </div>
+        <!--
+        <div class="help-block col-sm-offset-4 col-sm-8" ng-show="cardholderLoginForm.pinCode.$invalid">Card number should contain only digits</div>
+        -->
+    </div>
+</form>
+<!-- debug
+    <div>
+        <tt>cardholderLoginForm.cardNumber.$valid = {{cardholderLoginForm.cardNumber.$valid}}</tt><br/>
+        <tt>cardholderLoginForm.cardNumber.$error = {{cardholderLoginForm.cardNumber.$error}}</tt><br/>
+    </div>
+-->

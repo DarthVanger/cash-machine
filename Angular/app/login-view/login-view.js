@@ -5,10 +5,14 @@ angular.module('cashMachine.loginView', ['ngRoute'])
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/login-view', {
     templateUrl: 'login-view/login-view.html',
-    controller: 'View1Ctrl'
+    controller: 'LoginViewCtrl'
   });
 }])
 
-.controller('View1Ctrl', [function() {
-
+.controller('LoginViewCtrl', ['$scope', function($scope) {
+    console.log('login view!');
+    //$scope.cardholderInfo = {
+    //    cardNumber: 12,
+    //    pinCode: 24
+    //};
 }]);

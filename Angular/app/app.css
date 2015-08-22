@@ -1,4 +1,5 @@
 /* app css stylesheet */
+@import url('login-view/login-view.css');
 
 .menu {
   list-style: none;
