@@ -1,7 +1,4 @@
 <div class="pin-code-keyboard">
-    <div class="h3">
-        Please enter pin-code by clicking on buttons
-    </div>
     <div ng-repeat="i in [0,1,2]" class="clearfix pin-code-keyboard__row">
         <button type="button" ng-repeat="j in [1,2,3]" class="col-sm-4 btn btn-info pin-code-keyboard__btn" ng-click="numberButtonPress(i*3 + j)">{{ i*3 + j }}</button>
     </div>
@@ -15,6 +12,6 @@
     <div class="clearfix pin-code-keyboard__row">
         <div class="pin-code-keyboard__display">{{ pinCode }}</div>
     </div>
-    <button type="submit" class="btn btn-primary pin-code-keyboard__submit-btn">Proceed</button>
+    <button type="submit" class="btn btn-primary pin-code-keyboard__submit-btn" ng-click="submitPinCode()">Proceed</button>
 </div>
 

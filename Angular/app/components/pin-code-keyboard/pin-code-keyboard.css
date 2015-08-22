@@ -1,5 +1,6 @@
 .pin-code-keyboard {
     max-width: 300px;
+    margin: 0 auto;
 }
 .pin-code-keyboard__row + .pin-code-keyboard__row {
     margin-top: 2px;
