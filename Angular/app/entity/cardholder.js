@@ -1,11 +1,11 @@
 'use strict';
 
 angular.module('cashMachine.entity.cardholder', ['ngResource'])
-    .factory('Cardholder', function($resource) {
+    .factory('Cardholder', ['ServerConfig', '$resource', function(ServerConfig, $resource) {
         return $resource('/database/cardholder/:cardNumber', null, {
             login: {
                 method: 'POST',
-                url: '/database/cardholder/login'
+                url: ServerConfig.siteBaseUrl + '/database/cardholder/login'
             }
         });
-    });
+    }]);

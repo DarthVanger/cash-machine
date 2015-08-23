@@ -1,7 +1,7 @@
 var express = require('express');
 var bodyParser = require('body-parser'); // body parser for parsing POST data from request body
 var fs = require('fs');
-var config = require('./config');
+var serverConfig = require('../server-config');
 var auth = require('./auth');
 
 // use file database
@@ -19,11 +19,11 @@ cashMachine.use(express.static('../Angular/app'));
 databaseApi.use(bodyParser.json());
 
 // mount the interface and the database api servers
-app.use(config.serverBaseUrl + '/', cashMachine);
-app.use(config.serverBaseUrl + '/database/cardholder', databaseApi);
+app.use(serverConfig.siteBaseUrl + '/', cashMachine);
+app.use(serverConfig.siteBaseUrl + '/database/cardholder', databaseApi);
 
-app.listen(config.serverPort);
-console.log('Listening to port ' + config.serverPort);
+app.listen(serverConfig.port);
+console.log('Listening to port ' + serverConfig.port);
 
 // ---------------------------------
 
@@ -31,7 +31,18 @@ console.log('Listening to port ' + config.serverPort);
 cashMachine.get('/', function(req, res) {
     var indexHtmlPath =  __dirname + '/../Angular/app/index.html';
     fs.readFile(indexHtmlPath, 'utf8', function (err, data) {
+        if (err) console.log(err);
         res.type('text/html');
+        res.send(data);
+    });
+});
+
+// serve 'server-config.js' for Angular to know what server base-url is
+cashMachine.get('/server-config.js', function(req, res) {
+    var serverConfigFilePath =  __dirname + '/../server-config.js';
+    fs.readFile(serverConfigFilePath, 'utf8', function (err, data) {
+        if (err) console.log(err);
+        res.type('application/javascript');
         res.send(data);
     });
 });
