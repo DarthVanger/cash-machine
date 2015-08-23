@@ -24,7 +24,7 @@ angular.module('cashMachine.getCashView', [
             $scope.notEnoughMoneyError = false;
             cardholder.balance -= withdrawalAmount;
             console.log('trying to save cardholder: ', cardholder);
-            CardholderResource.save(cardholder)
+            CardholderResource.save(cardholder).$promise
                 .then(function (result) {
                     console.log('success saving entity! Result:', result)
                 })
