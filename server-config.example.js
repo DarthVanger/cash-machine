@@ -5,7 +5,8 @@
 
 var serverConfig = {
     /**
-     * Set siteBaseUrl if site url on server is not '/'
+     * Set siteBaseUrl to '/my-sub-site', if you're setting up site on shared domain
+     * Leave it as emtpy string '', if site has own domain
      */
     siteBaseUrl: '',
     /**
