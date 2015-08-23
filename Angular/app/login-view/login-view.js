@@ -12,7 +12,7 @@ angular.module('cashMachine.loginView', [
   });
 }])
 
-.controller('LoginViewCtrl', ['$scope', 'Cardholder', function($scope, Cardholder) {
+.controller('LoginViewCtrl', ['$scope', '$location', 'Cardholder', 'AuthToken', function($scope, $location, Cardholder, AuthToken) {
 
     $scope.cardholderInfo = {
         cardNumber: '',
@@ -41,12 +41,23 @@ angular.module('cashMachine.loginView', [
             console.log('submittting! :)');
             console.log('cardholder info:');
             console.log($scope.cardholderInfo);
-            Cardholder.get({ 'cardNumber': $scope.cardholderInfo.cardNumber }, function(cardholder) {
-                console.log('cardholder', cardholder);
-            }, function(error) {
-                console.log('error retrvivieng card holde from server!');
-                console.log(error);
-            });
+            Cardholder.login($scope.cardholderInfo).$promise
+                .then(function (result) {
+                    if (!result.error) {
+                        console.log('success!');
+                        console.log('result:', result);
+                        AuthToken = result.token;
+                        $scope.authenticationError = null;
+                        $location.path('/cardholder-home');
+                    } else {
+                        console.log(result.error);
+                        $scope.authenticationError = { message: 'Card number or pincode is incorrect' };
+                    }
+                })
+                .catch(function (error) {
+                    console.log('error logging in:');
+                    console.log(error);
+                });
 
         } else {
             console.log('form invalid! :)');

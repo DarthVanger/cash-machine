@@ -10,4 +10,7 @@ angular.module('cashMachine', [
 ]).
 config(['$routeProvider', function($routeProvider) {
   $routeProvider.otherwise({redirectTo: '/login-view'});
-}]);
+}]).
+value('AuthToken', '');
+
+
