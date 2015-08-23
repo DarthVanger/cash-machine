@@ -9,19 +9,16 @@ angular.module('cashMachine.cardholderHomeView', ['ngRoute'])
   });
 }])
 
-.controller('CardholderHomeViewCtrl', ['CardholderResource', 'SessionStorage', function(CardholderResource, SessionStorage) {
-    var cardholder = SessionStorage.getItem('cardholder');
+.controller('CardholderHomeViewCtrl', ['$location', '$scope', 'CardholderResource', 'SessionStorage', function($location, $scope, CardholderResource, SessionStorage) {
+    $scope.cardholder = SessionStorage.getItem('cardholder');
     console.log('CardholderHomeViewCtrl');
-    console.log('cardholder:', cardholder);
-    console.log('cardholder.cardNumber:', cardholder.cardNumber);
-    //CardholderResource.get({ cardNumber: Cardholder.cardNumber }).$promise
-    //    .then(function (result) {
-    //        console.log('cardholder get succes!');
-    //        console.log('result:');
-    //        console.log(result);
-    //    })
-    //    .catch(function (error) {
-    //        console.log('error getting cardholder:');
-    //        console.log(error);
-    //    });
+    console.log('cardholder:', $scope.cardholder);
+    if (!$scope.cardholder) {
+        $location.path('/login');
+    }
+
+    $scope.logout = function() {
+        SessionStorage.removeItem('cardholder');
+        $location.path('/login');
+    };
 }]);

@@ -1,3 +1,4 @@
-<p>
-    Cardholder home 
-</p>
+<div class="h2">{{ cardholder.name }}</div>
+<p>Balance: ${{ cardholder.balance }}</p>
+<a href="#/get-cash" class="btn btn-primary">Get Cash</a>
+<button class="btn btn-danger" ng-click="logout()">Exit</button>

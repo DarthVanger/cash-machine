@@ -15,7 +15,7 @@ angular.module('cashMachine', [
   'cashMachine.sessionStorage'
 ]).
 config(['$routeProvider', function($routeProvider) {
-  $routeProvider.otherwise({redirectTo: '/login-view'});
+  $routeProvider.otherwise({redirectTo: '/login'});
 }]).
 value('AuthToken', '').
 constant('ServerConfig', serverConfig);

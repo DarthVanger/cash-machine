@@ -8,6 +8,9 @@ angular.module('cashMachine.sessionStorage', [])
             },
             getItem: function(key) {
                 return JSON.parse(sessionStorage.getItem(key));
+            },
+            removeItem: function(key) {
+                sessionStorage.removeItem(key);
             }
         };
     }]);

@@ -5,13 +5,17 @@ angular.module('cashMachine.loginView', [
 ])
 
 .config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/login-view', {
+  $routeProvider.when('/login', {
     templateUrl: 'view/login-view/login-view.html',
     controller: 'LoginViewCtrl'
   });
 }])
 
 .controller('LoginViewCtrl', ['$scope', '$location','CardholderResource', 'AuthToken', 'SessionStorage', function($scope, $location, CardholderResource, AuthToken, SessionStorage) {
+
+    if (SessionStorage.getItem('cardholder')) {
+        $location.path('/cardholder-home');
+    };
 
     $scope.cardholder = {
         cardNumber: '',
