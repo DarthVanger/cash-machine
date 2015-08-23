@@ -63,9 +63,11 @@ databaseApi.post('/login', function(req, res) {
         console.log('cardholder: ', cardholder);
         console.log('cardholder.pinCode = ' + cardholder.pinCode);
         if (cardholder.pinCode == auth.encryptPinCode(cardholderLoginInfo.pinCode)) {
-            res.json({'token': auth.generateToken()});
+            // authentication success
+            res.json({'cardholder': cardholder});
             res.end();
         } else {
+            // authentication fail: login or pass incorrect
             res.json({'error': 'login or pass incorrect'});
             res.end();
         }
@@ -74,6 +76,13 @@ databaseApi.post('/login', function(req, res) {
         res.end();
     }
 });
+
+// Check authentication token
+//databaseApi.post('/check-auth-token', function(req, res) {
+//    console.log('checking cardholder auth token');
+//    var token = req.body.token;
+//    if (auth.tokenIsActive(
+//});
 
 // Retrieve card holder by card number
 databaseApi.get('/:cardNumber', function(req, res) {

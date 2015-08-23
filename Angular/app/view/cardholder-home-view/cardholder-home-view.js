@@ -9,6 +9,19 @@ angular.module('cashMachine.cardholderHomeView', ['ngRoute'])
   });
 }])
 
-.controller('CardholderHomeViewCtrl', [function() {
-    console.log('sdf');
+.controller('CardholderHomeViewCtrl', ['CardholderResource', 'SessionStorage', function(CardholderResource, SessionStorage) {
+    var cardholder = SessionStorage.getItem('cardholder');
+    console.log('CardholderHomeViewCtrl');
+    console.log('cardholder:', cardholder);
+    console.log('cardholder.cardNumber:', cardholder.cardNumber);
+    //CardholderResource.get({ cardNumber: Cardholder.cardNumber }).$promise
+    //    .then(function (result) {
+    //        console.log('cardholder get succes!');
+    //        console.log('result:');
+    //        console.log(result);
+    //    })
+    //    .catch(function (error) {
+    //        console.log('error getting cardholder:');
+    //        console.log(error);
+    //    });
 }]);

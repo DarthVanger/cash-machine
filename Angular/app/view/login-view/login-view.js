@@ -11,11 +11,11 @@ angular.module('cashMachine.loginView', [
   });
 }])
 
-.controller('LoginViewCtrl', ['$scope', '$location', 'CardholderResource', 'AuthToken', function($scope, $location, CardholderResource, AuthToken) {
+.controller('LoginViewCtrl', ['$scope', '$location','CardholderResource', 'AuthToken', 'SessionStorage', function($scope, $location, CardholderResource, AuthToken, SessionStorage) {
 
-    $scope.cardholderInfo = {
+    $scope.cardholder = {
         cardNumber: '',
-        pinCode: '' 
+        pinCode: ''
     };
     
     console.log('login view!');
@@ -32,21 +32,21 @@ angular.module('cashMachine.loginView', [
      */
     $scope.pinCodeWasEntered = function(pinCode) {
         $scope.hideVirtualKeyboard();
-        $scope.cardholderInfo.pinCode = pinCode;
+        $scope.cardholder.pinCode = pinCode;
     };
 
     $scope.submitLogin = function() {
         if ($scope.cardholderLoginForm.$valid) {
             console.log('submittting! :)');
             console.log('cardholder info:');
-            console.log($scope.cardholderInfo);
-            CardholderResource.login($scope.cardholderInfo).$promise
+            console.log($scope.cardholder);
+            CardholderResource.login($scope.cardholder).$promise
                 .then(function (result) {
                     if (!result.error) {
                         console.log('success!');
                         console.log('result:', result);
-                        AuthToken = result.token;
                         $scope.authenticationError = null;
+                        SessionStorage.setItem('cardholder', result.cardholder);
                         $location.path('/cardholder-home');
                     } else {
                         console.log(result.error);

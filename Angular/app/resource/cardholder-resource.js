@@ -6,6 +6,10 @@ angular.module('cashMachine.resource.cardholderResource', ['ngResource'])
             login: {
                 method: 'POST',
                 url: ServerConfig.siteBaseUrl + '/database/cardholder/login'
+            },
+            checkAuthToken: {
+                method: 'POST',
+                url: ServerConfig.siteBaseUrl + '/database/cardholder/check-auth-token'
             }
         });
     }]);
