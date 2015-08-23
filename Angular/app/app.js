@@ -9,6 +9,7 @@ angular.module('cashMachine', [
   'ngRoute',
   'cashMachine.loginView',
   'cashMachine.cardholderHomeView',
+  'cashMachine.getCashView',
   'cashMachine.pinCodeKeyboard',
   'cashMachine.entity.cardholder',
   'cashMachine.resource.cardholderResource',
