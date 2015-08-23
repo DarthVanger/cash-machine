@@ -1,5 +1,5 @@
 /* app css stylesheet */
-@import url('login-view/login-view.css');
+@import url('view/login-view/login-view.css');
 @import url('components/pin-code-keyboard/pin-code-keyboard.css');
 
 .menu {

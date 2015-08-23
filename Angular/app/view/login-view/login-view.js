@@ -7,7 +7,7 @@ angular.module('cashMachine.loginView', [
 
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/login-view', {
-    templateUrl: 'login-view/login-view.html',
+    templateUrl: 'view/login-view/login-view.html',
     controller: 'LoginViewCtrl'
   });
 }])
