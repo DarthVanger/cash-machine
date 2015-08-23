@@ -10,5 +10,5 @@ angular.module('cashMachine.cardholderHomeView', ['ngRoute'])
 }])
 
 .controller('CardholderHomeViewCtrl', [function() {
-
+    console.log('sdf');
 }]);

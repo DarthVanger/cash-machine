@@ -10,7 +10,7 @@ angular.module('cashMachine', [
   'cashMachine.loginView',
   'cashMachine.cardholderHomeView',
   'cashMachine.pinCodeKeyboard',
-  'cashMachine.entity.cardholder'
+  'cashMachine.resource.cardholderResource'
 ]).
 config(['$routeProvider', function($routeProvider) {
   $routeProvider.otherwise({redirectTo: '/login-view'});

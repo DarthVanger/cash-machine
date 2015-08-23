@@ -1,8 +1,7 @@
 'use strict';
 
 angular.module('cashMachine.loginView', [
-    'ngRoute',
-    'cashMachine.entity.cardholder'
+    'ngRoute'
 ])
 
 .config(['$routeProvider', function($routeProvider) {
@@ -12,7 +11,7 @@ angular.module('cashMachine.loginView', [
   });
 }])
 
-.controller('LoginViewCtrl', ['$scope', '$location', 'Cardholder', 'AuthToken', function($scope, $location, Cardholder, AuthToken) {
+.controller('LoginViewCtrl', ['$scope', '$location', 'CardholderResource', 'AuthToken', function($scope, $location, CardholderResource, AuthToken) {
 
     $scope.cardholderInfo = {
         cardNumber: '',
@@ -41,7 +40,7 @@ angular.module('cashMachine.loginView', [
             console.log('submittting! :)');
             console.log('cardholder info:');
             console.log($scope.cardholderInfo);
-            Cardholder.login($scope.cardholderInfo).$promise
+            CardholderResource.login($scope.cardholderInfo).$promise
                 .then(function (result) {
                     if (!result.error) {
                         console.log('success!');
