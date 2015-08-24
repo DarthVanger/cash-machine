@@ -16,14 +16,16 @@
         </div>
     </div>
     <button type="submit" class="btn btn-primary pull-right" ng-click="submitLogin()">Submit</button>
-    <br />
-    <br />
-    <br />
+
+    <div style="clear: both; height: 1.5em;"></div>
+
     <div class="text-danger col-sm-offset-4 col-sm-8" ng-show="cardholderLoginForm.$invalid">Form data is invalid. Please correct mistakes to submit.</div>
 </form>
 
+<div style="clear: both; height: 1.5em;"></div>
+
 <!-- authentication error message field -->
-<div class="text-danger" ng-show="authenticationError">
+<div class="text-danger col-sm-offset-4 col-sm-8" ng-show="authenticationError">
     {{ authenticationError.message }}
 </div>
 
