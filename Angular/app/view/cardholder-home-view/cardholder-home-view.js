@@ -1,6 +1,10 @@
 'use strict';
 
-angular.module('cashMachine.cardholderHomeView', ['ngRoute'])
+angular.module('cashMachine.cardholderHomeView', [
+    'ngRoute',
+    'cashMachine.sessionManager',
+    'cashMachine.sessionStorage'
+])
 
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/cardholder-home', {
@@ -9,13 +13,15 @@ angular.module('cashMachine.cardholderHomeView', ['ngRoute'])
   });
 }])
 
-.controller('CardholderHomeViewCtrl', ['$location', '$scope', 'CardholderResource', 'SessionStorage', function($location, $scope, CardholderResource, SessionStorage) {
-    $scope.cardholder = SessionStorage.getItem('cardholder');
+.controller('CardholderHomeViewCtrl', ['$location', '$scope', 'CardholderResource', 'SessionStorage', 'SessionManager', function($location, $scope, CardholderResource, SessionStorage, SessionManager) {
+    if (!SessionManager.userIsLogged()) {
+        $location.path('/login');
+    } else {
+        $scope.cardholder = SessionStorage.getItem('cardholder');
+    }
+
     console.log('CardholderHomeViewCtrl');
     console.log('cardholder:', $scope.cardholder);
-    if (!$scope.cardholder) {
-        $location.path('/login');
-    }
 
     $scope.logout = function() {
         SessionStorage.removeItem('cardholder');

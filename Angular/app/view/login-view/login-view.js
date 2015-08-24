@@ -1,7 +1,11 @@
 'use strict';
 
 angular.module('cashMachine.loginView', [
-    'ngRoute'
+    'ngRoute',
+    'cashMachine.pinCodeKeyboard',
+    'cashMachine.resource.cardholderResource',
+    'cashMachine.sessionManager',
+    'cashMachine.sessionStorage'
 ])
 
 .config(['$routeProvider', function($routeProvider) {
@@ -11,9 +15,10 @@ angular.module('cashMachine.loginView', [
   });
 }])
 
-.controller('LoginViewCtrl', ['$scope', '$location','CardholderResource', 'AuthToken', 'SessionStorage', function($scope, $location, CardholderResource, AuthToken, SessionStorage) {
+.controller('LoginViewCtrl', ['$scope', '$location', 'CardholderResource', 'SessionStorage', 'SessionManager', function($scope, $location, CardholderResource, SessionStorage, SessionManager) {
 
-    if (SessionStorage.getItem('cardholder')) {
+    console.log('SessionManager', SessionManager);
+    if (SessionManager.userIsLogged()) {
         $location.path('/cardholder-home');
     };
 

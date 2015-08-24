@@ -1,7 +1,9 @@
 'use strict';
 
 angular.module('cashMachine.getCashView', [
-    'ngRoute'
+    'ngRoute',
+    'cashMachine.sessionManager',
+    'cashMachine.sessionStorage'
 ])
 
 .config(['$routeProvider', function($routeProvider) {
@@ -11,10 +13,13 @@ angular.module('cashMachine.getCashView', [
   });
 }])
 
-.controller('GetCashViewCtrl', ['$scope', '$location','CardholderResource', 'SessionStorage', function($scope, $location, CardholderResource,  SessionStorage) {
-    var cardholder = SessionStorage.getItem('cardholder');
-    if (!cardholder) {
+.controller('GetCashViewCtrl', ['$scope', '$location','CardholderResource', 'SessionStorage', 'SessionManager', function($scope, $location, CardholderResource,  SessionStorage, SessionManager) {
+    var cardholder;
+
+    if (!SessionManager.userIsLogged()) {
         $location.path('/login');
+    } else {
+        cardholder = SessionStorage.getItem('cardholder');
     }
 
     $scope.withdrawCash = function(withdrawalAmount) {

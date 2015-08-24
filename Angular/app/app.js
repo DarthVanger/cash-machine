@@ -9,14 +9,12 @@ angular.module('cashMachine', [
   'ngRoute',
   'cashMachine.loginView',
   'cashMachine.cardholderHomeView',
-  'cashMachine.getCashView',
-  'cashMachine.pinCodeKeyboard',
-  'cashMachine.entity.cardholder',
-  'cashMachine.resource.cardholderResource',
-  'cashMachine.sessionStorage'
+  'cashMachine.getCashView'
 ]).
 config(['$routeProvider', function($routeProvider) {
   $routeProvider.otherwise({redirectTo: '/login'});
 }]).
-value('AuthToken', '').
+/**
+ * ServerConfig provides sideBaseUrl to know address for ajax requests
+ */
 constant('ServerConfig', serverConfig);
