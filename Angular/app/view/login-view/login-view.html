@@ -19,15 +19,19 @@
 
     <div style="clear: both; height: 1.5em;"></div>
 
-    <!-- form is invalid message field -->
-    <div class="text-danger col-sm-offset-4 col-sm-8" ng-show="cardholderLoginForm.$invalid">Form data is invalid. Please correct mistakes to submit.</div>
+    <!-- form is invalid message -->
+    <div class="alert alert-danger" ng-show="cardholderLoginForm.$invalid">Form data is invalid. Please correct mistakes to submit.</div>
 
-    <div style="clear: both; height: 1.5em;"></div>
-
-    <!-- authentication error message field -->
-    <div class="text-danger col-sm-offset-4 col-sm-8" ng-show="authenticationError">
+    <!-- authentication error message -->
+    <div class="alert alert-danger" ng-show="authenticationError">
         <div>{{ authenticationError.message }}</div>
         <div>(You can use test user with cardnumber 1234 and pin-code 1234)</div>
+    </div>
+
+    <!-- server error message -->
+    <div class="alert alert-danger" ng-show="formServerError">
+        Sorry, we've encountered server error trying to log you in!<br />
+        Please, try again later :(
     </div>
 </form>
 

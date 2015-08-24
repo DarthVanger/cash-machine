@@ -46,15 +46,9 @@ angular.module('cashMachine.loginView', [
 
     $scope.submitLogin = function() {
         if ($scope.cardholderLoginForm.$valid) {
-            console.log('submittting! :)');
-            console.log('cardholder info:');
-            console.log($scope.cardholder);
             CardholderResource.login($scope.cardholder).$promise
                 .then(function (result) {
                     if (!result.error) {
-                        console.log('success!');
-                        console.log('result:', result);
-                        $scope.authenticationError = null;
                         SessionManager.startSession(result.cardholder);
                         $location.path('/cardholder-home');
                     } else {
@@ -63,12 +57,13 @@ angular.module('cashMachine.loginView', [
                     }
                 })
                 .catch(function (error) {
-                    console.log('error logging in:');
+                    $scope.formServerError = true;
+                    console.log('server error logging in:');
                     console.log(error);
                 });
 
         } else {
-            console.log('form invalid! :)');
+            console.log('form invalid!');
         }
     };
 }]);
