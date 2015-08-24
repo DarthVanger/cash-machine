@@ -7,12 +7,12 @@
             <input type="number" name="withdrawalAmount" class="form-control" id="input-withdrawal-amount" ng-model="withdrawalAmount" />
         </div>
     </div>
-    <div class="help-block col-sm-offset-4 col-sm-8" ng-show="getCashForm.withdrawalAmount.$invalid">
+    <div class="alert alert-danger" ng-show="getCashForm.withdrawalAmount.$invalid">
         Withdrawal amount should contain only digits
     </div>
 
-    <div class="alert alert-warning" ng-show="notEnoughMoneyError">Not enough money to withdraw this amount</div>
-    <div class="alert alert-warning" ng-show="withdrawalServerError">
+    <div class="alert alert-danger" ng-show="notEnoughMoneyError">Not enough money to withdraw this amount</div>
+    <div class="alert alert-danger" ng-show="withdrawalServerError">
         Sorry, server error was encountered while processing the transaction.<br />
         Plese try again later :(
     </div>
