@@ -47,6 +47,8 @@ cashMachine.get('/server-config.js', function(req, res) {
     });
 });
 
+// ------------------------------------
+
 // Login
 databaseApi.post('/login', function(req, res) {
     console.log('trying to login carholder');
@@ -77,16 +79,8 @@ databaseApi.post('/login', function(req, res) {
     }
 });
 
-// Check authentication token
-//databaseApi.post('/check-auth-token', function(req, res) {
-//    console.log('checking cardholder auth token');
-//    var token = req.body.token;
-//    if (auth.tokenIsActive(
-//});
-
-// Retrieve card holder by card number
+// Retrieve cardholder by card number
 databaseApi.get('/:cardNumber', function(req, res) {
-    console.log('trying to find carholder with cardNumber = ' + req.params.cardNumber);
     var cardNumber = parseInt(req.params.cardNumber);
     var cardholder = db('card-holder').find({ 'cardNumber': cardNumber });
     if (typeof cardholder !== 'undefined') {
@@ -98,22 +92,20 @@ databaseApi.get('/:cardNumber', function(req, res) {
     }
 });
 
-/*
+// Update cardholder
+databaseApi.put('/:cardNumber', function(req, res) {
+    var cardNumber = parseInt(req.params.cardNumber);
+    var updatedCardholder = req.body; // bodyParser have already parsed json string to object
+    var existingCardholder = db('card-holder').find({ 'cardNumber': cardNumber});
+    if (!existingCardholder) {
+        res.end({ error: 'Trying to update non-existing cardholder with cardNumber = ' + cardNumber });
+    } else {
+        // update cardholder in db
+        db('card-holder').chain()
+          .find({ cardNumber: cardNumber })
+          .assign(updatedCardholder)
+          .value();
 
-// Create item
-databaseApi.post('/:entityName', function(req, res) {
-    var entityName = req.params.entityName;
-    var entityObject = req.body.entity; // bodyParser have already parsed json string to object
-    JsonFileDb.save(entityName, entityObject)
-        .then(function(id) {
-            res.status(200);
-            var jsonResponse = {'id': id};
-            res.end(JSON.stringify(jsonResponse));
-        })
-        .fail(function(error) {
-            res.status(500);
-            var jsonResponse = {'error': error};
-            res.end(JSON.stringify(jsonResponse));
-        });
+        res.end();
+    }
 });
-*/

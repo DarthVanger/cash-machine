@@ -10,10 +10,32 @@
     <div class="help-block col-sm-offset-4 col-sm-8" ng-show="getCashForm.withdrawalAmount.$invalid">
         Withdrawal amount should contain only digits
     </div>
+
+    <div class="alert alert-warning" ng-show="notEnoughMoneyError">Not enough money to withdraw this amount</div>
+    <div class="alert alert-warning" ng-show="withdrawalServerError">
+        Sorry, server error was encountered while processing the transaction.<br />
+        Plese try again later :(
+    </div>
+
     <button type="submit" class="btn btn-primary" ng-click="withdrawCash(withdrawalAmount)">Get Cash</button>
     <a href="#/cardholder-home" class="btn btn-danger">Cancel</a>
-    <br />
-    <br />
-    <br />
-    <div class="text-danger col-sm-offset-4 col-sm-8" ng-show="notEnoughMoneyError">Not enough money to withdraw this amount</div>
+
+    <div style="clear: both; height: 1.5em;"></div>
+
 </form>
+
+<!-- cash-withdraw-success-modal -->
+<div class="modal cash-withdraw-success-modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <a href="#/cardholder-home" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></a>
+        <h4 class="modal-title">Cash withdraw success!</h4>
+      </div>
+      <div class="modal-body">
+        <p>${{ withdrawalAmount }} was successefully withdrawn.</p>
+        <a href="#/cardholder-home" class="btn btn-primary">OK</a>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
