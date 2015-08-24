@@ -16,7 +16,10 @@
         Withdrawal amount shouldn't be empty
     </div>
 
-    <div class="alert alert-danger" ng-show="notEnoughMoneyError">Not enough money to withdraw this amount</div>
+    <div class="alert alert-danger" ng-show="notEnoughMoneyError">
+        There's not enough money on your card to withdraw this amount
+    </div>
+
     <div class="alert alert-danger" ng-show="withdrawalServerError">
         Sorry, server error was encountered while processing the transaction.<br />
         Plese try again later :(
