@@ -27,23 +27,25 @@ angular.module('cashMachine.getCashView', [
             $scope.notEnoughMoneyError = true;
         } else { // enough money
             $scope.notEnoughMoneyError = false;
-            cardholder.balance -= withdrawalAmount;
-            CardholderResource.update({ cardNumber: cardholder.cardNumber }, cardholder).$promise
-                .then(function (result) {
-                    if (!result.error) {
-                        SessionStorage.setItem('cardholder', cardholder);
-                        $scope.withdrawalServerError = false;
-                        $scope.withdrawalSuccess = true;
-                        $('.cash-withdraw-success-modal').show();
-                    } else {
-                        console.log('Error saving entity to database. Server error: ', error);
+            if ($scope.getCashForm.$valid) {
+                cardholder.balance -= withdrawalAmount;
+                CardholderResource.update({ cardNumber: cardholder.cardNumber }, cardholder).$promise
+                    .then(function (result) {
+                        if (!result.error) {
+                            SessionStorage.setItem('cardholder', cardholder);
+                            $scope.withdrawalServerError = false;
+                            $scope.withdrawalSuccess = true;
+                            $('.cash-withdraw-success-modal').show();
+                        } else {
+                            console.log('Error saving entity to database. Server error: ', error);
+                            $scope.withdrawalServerError = true;
+                        }
+                    })
+                    .catch(function (error) {
+                        console.log('Error saving entity. Server error: ', error)
                         $scope.withdrawalServerError = true;
-                    }
-                })
-                .catch(function (error) {
-                    console.log('Error saving entity. Server error: ', error)
-                    $scope.withdrawalServerError = true;
-                });
+                    });
+            }
         }
     };
 }]);
