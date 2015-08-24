@@ -35,7 +35,7 @@ angular.module('cashMachine.getCashView', [
                             SessionStorage.setItem('cardholder', cardholder);
                             $scope.withdrawalServerError = false;
                             $scope.withdrawalSuccess = true;
-                            $('.cash-withdraw-success-modal').show();
+                            $('.cash-withdraw-success-modal').modal('show');
                         } else {
                             console.log('Error saving entity to database. Server error: ', error);
                             $scope.withdrawalServerError = true;
@@ -48,4 +48,10 @@ angular.module('cashMachine.getCashView', [
             }
         }
     };
+
+    // redirect user to 'cardholder-home' view when he closes withdraw success modal
+    $('.cash-withdraw-success-modal').on('hidden.bs.modal', function(event) {
+        $location.path('/cardholder-home');
+        $scope.$apply();
+    });
 }]);

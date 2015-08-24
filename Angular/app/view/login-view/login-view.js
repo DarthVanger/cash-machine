@@ -27,11 +27,11 @@ angular.module('cashMachine.loginView', [
     };
     
     $scope.showVirtualKeyboard = function() {
-        $('.pin-code-keyboard-modal').show();
+        $('.pin-code-keyboard-modal').modal('show');
     };
 
     $scope.hideVirtualKeyboard = function() {
-        $('.pin-code-keyboard-modal').hide();
+        $('.pin-code-keyboard-modal').modal('hide');
     };
 
     /**
