@@ -24,7 +24,7 @@ angular.module('cashMachine.cardholderHomeView', [
     console.log('cardholder:', $scope.cardholder);
 
     $scope.logout = function() {
-        SessionStorage.removeItem('cardholder');
+        SessionManager.logout();
         $location.path('/login');
     };
 }]);

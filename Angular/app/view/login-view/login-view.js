@@ -55,7 +55,7 @@ angular.module('cashMachine.loginView', [
                         console.log('success!');
                         console.log('result:', result);
                         $scope.authenticationError = null;
-                        SessionStorage.setItem('cardholder', result.cardholder);
+                        SessionManager.startSession(result.cardholder);
                         $location.path('/cardholder-home');
                     } else {
                         console.log(result.error);
