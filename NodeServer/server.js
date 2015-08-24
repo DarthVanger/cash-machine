@@ -51,7 +51,6 @@ cashMachine.get('/server-config.js', function(req, res) {
 
 // Login
 databaseApi.post('/login', function(req, res) {
-    console.log('trying to login carholder');
     var cardholderLoginInfo = req.body;
 
     if (!cardholderLoginInfo.cardNumber || !cardholderLoginInfo.pinCode) {
@@ -62,8 +61,6 @@ databaseApi.post('/login', function(req, res) {
 
     var cardholder = db('card-holder').find({ 'cardNumber': cardholderLoginInfo.cardNumber });
     if (typeof cardholder !== 'undefined') {
-        console.log('cardholder: ', cardholder);
-        console.log('cardholder.pinCode = ' + cardholder.pinCode);
         if (cardholder.pinCode == auth.encryptPinCode(cardholderLoginInfo.pinCode)) {
             // authentication success
             res.json({'cardholder': cardholder});

@@ -17,7 +17,6 @@ angular.module('cashMachine.loginView', [
 
 .controller('LoginViewCtrl', ['$scope', '$location', 'CardholderResource', 'SessionStorage', 'SessionManager', function($scope, $location, CardholderResource, SessionStorage, SessionManager) {
 
-    console.log('SessionManager', SessionManager);
     if (SessionManager.userIsLogged()) {
         $location.path('/cardholder-home');
     };
@@ -27,7 +26,6 @@ angular.module('cashMachine.loginView', [
         pinCode: ''
     };
     
-    console.log('login view!');
     $scope.showVirtualKeyboard = function() {
         $('.pin-code-keyboard-modal').show();
     };
@@ -52,7 +50,6 @@ angular.module('cashMachine.loginView', [
                         SessionManager.startSession(result.cardholder);
                         $location.path('/cardholder-home');
                     } else {
-                        console.log(result.error);
                         $scope.authenticationError = { message: 'Card number or pincode is incorrect' };
                     }
                 })

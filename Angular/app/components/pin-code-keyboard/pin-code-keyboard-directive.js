@@ -13,7 +13,6 @@ angular.module('cashMachine.pinCodeKeyboard.pinCodeKeyboard-directive', [])
 
         link: function(scope, element, attrs) {
             scope.pinCode = '';
-            console.log('element:');
             element.find('.js-keyboard-number-btn').on('click', function() {
                 scope.pinCode++;
                 scope.$apply();

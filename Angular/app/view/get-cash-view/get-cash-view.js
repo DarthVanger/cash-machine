@@ -20,7 +20,6 @@ angular.module('cashMachine.getCashView', [
         $location.path('/login');
     } else {
         cardholder = SessionStorage.getItem('cardholder');
-        console.log('get-cash-view, cardholder: ', cardholder);
     }
 
     $scope.withdrawCash = function(withdrawalAmount) {
@@ -29,11 +28,9 @@ angular.module('cashMachine.getCashView', [
         } else { // enough money
             $scope.notEnoughMoneyError = false;
             cardholder.balance -= withdrawalAmount;
-            console.log('trying to save cardholder: ', cardholder);
             CardholderResource.update({ cardNumber: cardholder.cardNumber }, cardholder).$promise
                 .then(function (result) {
                     if (!result.error) {
-                        console.log('success saving entity! Result:', result)
                         SessionStorage.setItem('cardholder', cardholder);
                         $scope.withdrawalServerError = false;
                         $scope.withdrawalSuccess = true;

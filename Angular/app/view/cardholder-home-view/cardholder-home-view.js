@@ -14,14 +14,12 @@ angular.module('cashMachine.cardholderHomeView', [
 }])
 
 .controller('CardholderHomeViewCtrl', ['$location', '$scope', 'CardholderResource', 'SessionStorage', 'SessionManager', function($location, $scope, CardholderResource, SessionStorage, SessionManager) {
+
     if (!SessionManager.userIsLogged()) {
         $location.path('/login');
     } else {
         $scope.cardholder = SessionStorage.getItem('cardholder');
     }
-
-    console.log('CardholderHomeViewCtrl');
-    console.log('cardholder:', $scope.cardholder);
 
     $scope.logout = function() {
         SessionManager.logout();
